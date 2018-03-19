@@ -1,0 +1,43 @@
+@keyframes shake-rotation {
+    10%,
+    90% {
+        transform: rotate(10deg);
+    }
+
+    20%,
+    80% {
+        transform: rotate(20deg);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: rotate(-30deg);
+    }
+
+    40%,
+    60% {
+        transform: rotate(30deg);
+    }
+}
+
+@keyframes wiggle-horizontal {
+    10% {
+        transform: translate(.1em, 0);
+    }
+    20% {
+        transform: translate(.1em, 0);
+    }
+    40%,
+    90% {
+        transform: translate(.6em, 0);
+    }
+    50%,
+    80% {
+        transform: translate(.7em, 0);
+    }
+    70%,
+    100% {
+        transform: translate(.5em, 0);
+    }
+}

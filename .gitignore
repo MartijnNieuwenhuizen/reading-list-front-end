@@ -1,0 +1,30 @@
+# IDE's
+.idea
+.project
+*.sublime-*
+
+
+# Node.js
+node_modules
+npm-debug.log
+
+
+# Build and test tools
+*.zip
+dist/*
+
+
+# Cache
+src/static/css/_sprite.scss
+src/static/img/sprite.svg
+.sass-cache
+.cache
+
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+
+# Other
+.env

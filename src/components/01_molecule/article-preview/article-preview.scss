@@ -1,0 +1,42 @@
+.article-preview {
+    border: $default-border-width solid $color-black;
+    border-radius: $default-border-radius;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        padding: .8rem;
+    }
+    &__title {
+        flex-grow: 1;
+        text-decoration: none;
+        @include hocus {
+            text-decoration: underline;
+        }
+    }
+    &__title-inner {
+        margin: 0;
+        font-size: 1.625rem;
+    }
+
+    &__tags {
+        padding: .4rem .8rem;
+        border-top: 1px solid $color-black;
+        border-bottom: 1px solid $color-black;
+    }
+
+    &__body {
+        padding: 0 .8rem;
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        padding: 0 .8rem .8rem;
+    }
+
+    &__footer-right {
+        flex-grow: 1;
+        text-align: right;
+    }
+}

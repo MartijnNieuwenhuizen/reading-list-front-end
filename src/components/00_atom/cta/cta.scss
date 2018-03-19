@@ -1,0 +1,27 @@
+.cta {
+    display: flex;
+    align-items: center;
+
+    color: $color-primary;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+
+    &::after {
+        content: "";
+        width: 3em;
+        height: 1em;
+        display: inline-block;
+        margin: 0 0 0 .3em;
+
+        @include icon('cta-to-right');
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    @include hocus {
+        &::after {
+            animation: wiggle-horizontal $default-animation-time $default-shake-easing both;
+        }
+    }
+}

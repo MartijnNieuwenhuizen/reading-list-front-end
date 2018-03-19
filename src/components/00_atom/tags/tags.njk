@@ -1,0 +1,9 @@
+<ul class="tags">
+    {%- for tag in viewModel.tags -%}
+        <li class="tags__tag">
+            <a class="tags__link" href="/tags?tags={{ tag }}">
+                <span class="tags__icon">#</span>{{ tag }}
+            </a>
+        </li>
+    {%- endfor -%}
+</ul>

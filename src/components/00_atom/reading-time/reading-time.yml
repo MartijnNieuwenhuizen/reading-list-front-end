@@ -1,0 +1,12 @@
+title: Reading Time
+description: Time the avarage reader needs to read this article
+
+demo: |
+  <div style="width:100%; height:400px; padding:1em;">{}</div>
+
+implementation: Include as a component and provide it's own content file for the postfix. Provide the time as viewModel argument during the include.
+
+viewsource:
+  - reading-time.njk
+  - reading-time-content.nl.json
+  - reading-time.scss

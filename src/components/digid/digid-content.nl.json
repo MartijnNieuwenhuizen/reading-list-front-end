@@ -1,0 +1,14 @@
+{
+  "inloggen": "Bekijk mijn pensioenoverzicht",
+  "signInUrl": "/templates/login-bsn-form.html",
+  "digidDescription": "U logt in met uw DigiD",
+  "digidAlt": "Het logo van DigiD",
+  "communicationError": {
+    "title": "Er is een fout opgetreden",
+    "description": ["Er is een fout opgetreden in de communicatie met DigiD. Probeert u het later nogmaals. Indien deze fout blijft aanhouden, kijk dan op de website <a href=\"https://www.digid.nl\">https://www.digid.nl</a> voor de laatste informatie"]
+  },
+  "cancel": {
+    "title": "Inloggen geannuleerd",
+    "description": ["U heeft het inloggen met DigiD geannuleerd"]
+  }
+}

@@ -1,0 +1,15 @@
+.article-list {
+
+    &__list {
+        margin: 0;
+        padding: 0;
+    }
+    &__item {
+        max-width: 34.6875rem;
+        display: inline-block;
+        margin: 1em;
+        padding: 0;
+
+        list-style-type: none;
+    }
+}

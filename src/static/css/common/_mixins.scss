@@ -1,0 +1,27 @@
+// Style a hover and a focus
+@mixin hocus {
+    &:hover,
+    &:focus { @content; }
+}
+
+// Outline all elements
+@mixin outline {
+    * { outline: 1px solid lime; }
+}
+
+// Min width breakpoint
+@mixin min-width($width) {
+    @media (min-width: $width) { @content; }
+}
+
+// Add equal width and height
+@mixin square($dimensions) {
+    width: $dimensions;
+    height: $dimensions;
+}
+
+// add icon as background image
+@mixin icon($iconName) {
+    background-image: url('../img/icons/#{$iconName}.svg');
+}
+

@@ -1,0 +1,37 @@
+$spacing: .3em;
+
+.tags {
+    margin: 0 -#{$spacing};
+    padding: 0;
+
+    &__tag {
+        display: inline-block;
+        margin: 0;
+    }
+
+    &__link {
+        padding: 0 $spacing;
+        color: $color-black;
+        text-decoration: none;
+        @include hocus {
+            text-decoration: underline;
+            .tags__icon {
+                animation: shake-rotation $default-animation-time $default-shake-easing both;
+            }
+        }
+    }
+
+    &__icon {
+        display: inline-block;
+        margin: 0 .05em 0 0;
+        transform-origin: center;
+        font-weight: 100;
+        color: $color-primary;
+    }
+
+    &__tag {
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+}
+

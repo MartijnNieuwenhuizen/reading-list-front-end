@@ -1,0 +1,4 @@
+**/tasks/**
+**/vendor/**
+**/polyfill/**
+**/*.min.js
