@@ -1,15 +1,28 @@
+$max-single-item-width: 34.6875rem;
+$max-single-item-width: 28rem;
+
 .article-list {
 
     &__list {
         margin: 0;
         padding: 0;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax($max-single-item-width, 1fr));
+        grid-auto-flow: dense;
+        grid-gap: 1rem;
     }
     &__item {
-        max-width: 34.6875rem;
+        max-width: $max-single-item-width;
         display: inline-block;
         margin: 1em;
         padding: 0;
 
         list-style-type: none;
+
+        @supports (display: grid) {
+            max-width: 100%;
+            margin: 0;
+        }
     }
 }

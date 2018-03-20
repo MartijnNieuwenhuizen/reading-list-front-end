@@ -6,10 +6,12 @@
             </h3>
         </a>
 
-        {{ include('00_atom/reading-time/reading-time.njk', {
-            viewModel: viewModel.readingTime,
-            content: json('00_atom/reading-time/reading-time-content.nl.json')
+        <div class="article-preview__reading-time">
+            {{ include('00_atom/reading-time/reading-time.njk', {
+                viewModel: viewModel.readingTime,
+                content: json('00_atom/reading-time/reading-time-content.nl.json')
         }) | safe }}
+        </div>
     </div>
 
     <div class="article-preview__tags">
