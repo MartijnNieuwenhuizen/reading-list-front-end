@@ -1,16 +1,21 @@
-$max-single-item-width: 34.6875rem;
 $max-single-item-width: 28rem;
 
 .article-list {
+
+    &__title {
+        margin: 2rem 0;
+    }
 
     &__list {
         margin: 0;
         padding: 0;
 
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax($max-single-item-width, 1fr));
-        grid-auto-flow: dense;
-        grid-gap: 1rem;
+        @media (min-width: 500px) {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax($max-single-item-width, auto));
+            grid-auto-flow: dense;
+            grid-gap: 1rem;
+        }
     }
     &__item {
         max-width: $max-single-item-width;

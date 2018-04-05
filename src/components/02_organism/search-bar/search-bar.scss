@@ -1,3 +1,40 @@
-.search-bar { // es-lint-disable
+.search-bar {
+
+    &__field {
+        margin: 0;
+        padding: .3em;
+        border: 0;
+    }
+    &__flex-container {
+        display: flex;
+    }
+
+    &__input {
+        display: block;
+        flex-grow: 1;
+        margin: 0 1rem 0 0;
+        padding: .4rem .7rem;
+        font-size: $font-size-l;
+        border: 0;
+        transition: $default-animation-time $default-shake-easing box-shadow;
+
+        &:focus {
+            outline: none;
+        }
+    }
+    &__submit {
+        flex-shrink: 0;
+        border: 0;
+        padding: 0 1rem;
+        font-size: $font-size-l;
+        text-transform: uppercase;
+        border-left: .2rem solid $color-primary;
+    }
+}
+
+.hide--sr {
+    position: absolute;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
 
 }

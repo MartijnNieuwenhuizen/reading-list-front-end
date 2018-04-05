@@ -1,0 +1,14 @@
+.button {
+    padding: .1rem .75rem;
+    border: $half-border-width solid $color-primary;
+
+    color: $color-black;
+    background-color: $color-white;
+    transition: $default-transition-time background-color, $default-transition-time color;
+
+    @include hocus {
+        background-color: $color-primary;
+        color: $color-white;
+        cursor: pointer;
+    }
+}

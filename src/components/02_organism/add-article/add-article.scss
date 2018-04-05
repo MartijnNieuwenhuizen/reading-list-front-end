@@ -1,3 +1,15 @@
-.add-article { // es-lint-disable
+.add-article {
 
+    &__title {
+        margin: 2rem 0;
+    }
+
+    &__section {
+        border: none;
+        padding: 0 1rem 1rem;
+    }
+
+    &__submit {
+        margin: 0 .5rem;
+    }
 }

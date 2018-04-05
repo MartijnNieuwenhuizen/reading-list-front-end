@@ -7,41 +7,8 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{{ baseUri }}static/css/all.css">
-    {#- Shortest and fastest shim for ie-old html5 elements, add only the elements you need, or replace this with Modernizr -#}
-    <!--[if lt IE 9]><script>'article main section header figure nav footer picture'.replace(/\w+/g,function(n){document.createElement(n)})</script><![endif]-->
-    <script>
-        (function(d){
-            if (!('querySelector' in d && 'addEventListener' in window)) return;
-            d.documentElement.className += ' has-js';
-            function loadInOrder(src) {
-                var s = d.createElement('script');
-                var deps = [].slice.call(arguments).slice(1);
-                s.src = src;
-                s.onload = function() { deps.length && loadInOrder.apply(null, deps); };
-                s.onerror = console.error;
-                d.head.appendChild(s);
-            }
-            {# If updated: also update polyfill.js #}
-            var supported =
-                'Symbol' in window &&
-                'from' in Array &&
-                'find' in Array &&
-                'assign' in Object &&
-                'Promise' in window &&
-                'WeakMap' in window &&
-                'WeakSet' in window &&
-                'dataset' in document.createElement('div') &&
-                Symbol.iterator in NodeList.prototype;
-            if (supported) {
-                loadInOrder('{{ baseUri }}static/js/babel-helpers.js', '{{ baseUri }}static/js/main.js');
-            } else {
-                loadInOrder('{{ baseUri }}static/js/babel-helpers.js', '{{ baseUri }}static/js/polyfill.js', '{{ baseUri }}static/js/main.js');
-            }
-        }(document));
-    </script>
 </head>
-<body id="dropdown-target"
-      data-module="ui/toggle/Toggle">
+<body>
     {% block body %}{% endblock %}
 </body>
 </html>

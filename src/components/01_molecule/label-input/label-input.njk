@@ -1,0 +1,9 @@
+<div class="label-input">
+    {{ include('00_atom/label/label.njk', {
+        viewModel: viewModel
+    }) | safe }}
+
+    {{ include('00_atom/input/input.njk', {
+        viewModel: viewModel
+    }) | safe }}
+</div>
