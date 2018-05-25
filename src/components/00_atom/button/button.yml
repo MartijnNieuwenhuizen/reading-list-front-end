@@ -1,0 +1,12 @@
+title: Button
+description: A button, contains basic button styling and could be used in, for instance, a form.
+
+demo: |
+  <div style="background:#f4f4f4;">{}</div>
+
+implementation: The button contains type submit, therefor only a `title` is required.
+
+viewsource:
+  - button.njk
+  - button.scss
+  - button.json

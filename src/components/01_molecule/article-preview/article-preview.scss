@@ -1,6 +1,20 @@
 .article-preview {
+    position: relative;
+
     border: $default-border-width solid $color-black;
     border-radius: $default-border-radius;
+    background-color: $color-white;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 5.25rem;
+        height: 2.125rem;
+        transform: translate(-50%, -65%);
+        background-image: url("../img/icons/glasses.svg");
+    }
 
     &__header {
         display: flex;
@@ -15,13 +29,10 @@
             text-decoration: underline;
         }
     }
-    &__title-inner {
-        margin: 0;
-        font-size: 1.625rem;
-    }
     &__reading-time {
         flex-shrink: 0;
     }
+
 
     &__tags {
         padding: .4rem .8rem;

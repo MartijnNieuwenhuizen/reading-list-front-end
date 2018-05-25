@@ -1,41 +1,34 @@
 <div class="article-preview">
-    <div class="article-preview__header">
-        <a class="article-preview__title" href="{{ viewModel.link }}">
-            <h3 class="article-preview__title-inner">
-                {{ viewModel.title }}
-            </h3>
+
+    {% atom 'title-h3' %}
+
+    {# <div class="article-preview__header">
+        <a class="article-preview__title" href="{{ data.link }}">
+            {% atom 'title-h3', data %}
         </a>
 
         <div class="article-preview__reading-time">
-            {{ include('00_atom/reading-time/reading-time.njk', {
-                viewModel: viewModel.readingTime,
-                content: json('00_atom/reading-time/reading-time-content.nl.json')
-            }) | safe }}
+            {% atom 'reading-time', data %}
         </div>
     </div>
 
     <div class="article-preview__tags">
-        {{ include('00_atom/tags/tags.njk', {
-            viewModel: json('00_atom/tags/tags-data.json')
-        }) | safe }}
+        {% atom 'tags', data %}
     </div>
 
     <div class="article-preview__body">
-        {{ include('00_atom/intro/intro.njk', {
-            content: json('00_atom/intro/intro-content.nl.json')
-        }) | safe }}
+        {% if data.intro %}
+            {% atom 'intro', data %}
+        {% else %}
+            {% atom 'intro' %}
+        {% endif %}
     </div>
 
     <div class="article-preview__footer">
-        {{ include('00_atom/cta/cta.njk', {
-            content: json('00_atom/cta/cta-content.nl.json')
-        }) | safe }}
+        {% atom 'cta', data %}
 
         <span class="article-preview__footer-right">
-            {{ include('00_atom/date-added/date-added.njk', {
-                content: json('00_atom/date-added/date-added-content.nl.json'),
-                viewModel: json('00_atom/date-added/date-added-data.json')
-            }) | safe }}
+            {% atom 'date-added', data %}
         </span>
-    </div>
+    </div> #}
 </div>

@@ -1,0 +1,12 @@
+title: Article list
+description: ...
+
+demo: |
+  <div style="background:#f4f4f4">{}</div>
+
+implementation:
+
+viewsource:
+  - article-list.njk
+  - article-list.json
+  - article-list.scss

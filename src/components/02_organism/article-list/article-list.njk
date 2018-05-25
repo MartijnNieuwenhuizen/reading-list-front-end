@@ -1,12 +1,9 @@
 <section class="article-list">
-    <h2 class="article-list__title">{{ content.title }}</h2>
-    <ol class="article-list__list">
-        {%- for article in viewModel.articles -%}
-            <li class="article-list__item">
-                {{ include('01_molecule/article-preview/article-preview.njk', {
-                    viewModel: article
-                }) | safe }}
-            </li>
-        {%- endfor -%}
+    <h2 class="article-list__title">{{ data.title }}</h2>
+    <ol class="article-list__list"
+        data-module="02_organism/article-list/Article-list"
+        data-list-item-name="article-preview"
+        data-list-item-type="molecule"
+    >
     </ol>
 </section>

@@ -29,5 +29,10 @@ $max-single-item-width: 28rem;
             max-width: 100%;
             margin: 0;
         }
+
+        transition: .5s opacity;
+    }
+    &__item--hide {
+        opacity: 0;
     }
 }

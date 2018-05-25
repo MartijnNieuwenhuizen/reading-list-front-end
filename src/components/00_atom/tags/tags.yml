@@ -1,0 +1,12 @@
+title: Tags
+description: The, for the user, relevant subjects of an text visualised with `#` as an prefix
+
+demo: |
+  <div style="background:#f4f4f4">{}</div>
+
+implementation: Provide `array` of `tags` as texts
+
+viewsource:
+  - tags.njk
+  - tags.scss
+  - tags.json

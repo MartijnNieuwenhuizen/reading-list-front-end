@@ -1,0 +1,12 @@
+title: Input
+description: An basic input field
+
+demo: |
+  <div style="background:#f4f4f4; padding:1em .5em .5em .5em; box-sizing:border-box;">{}</div>
+
+implementation: Provide an `slug` and `type`
+
+viewsource:
+  - input.njk
+  - input.scss
+  - input.json

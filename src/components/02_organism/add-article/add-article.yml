@@ -1,0 +1,12 @@
+title: Add article
+description: A form with the fields needed to add an article to the list
+
+demo: |
+  <div style="background:#f4f4f4">{}</div>
+
+implementation: Loads an label and input pair for each item in the inputs array
+
+viewsource:
+  - add-article.njk
+  - add-article.json
+  - add-article.scss

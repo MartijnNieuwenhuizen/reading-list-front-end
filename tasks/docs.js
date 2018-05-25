@@ -7,7 +7,8 @@ import runSequence from 'run-sequence';
 import transform from 'gulp-transform';
 import ext from 'gulp-ext-replace';
 import gulpif from 'gulp-if';
-import * as util from './util/docs';
+import helpers from './util/docHelpers';
+import envManager from './util/envManager';
 
 /**
  * Sub-task: Docs copy statics
@@ -23,15 +24,20 @@ gulp.task('docs-copy-statics', () =>
 gulp.task('docs-render-index', () => {
 
     // Grab list of templates
-    const templates = util.getRelativePaths(config.docs.src.templatesAll, config.docs.src.templates);
-    const components = util.getComponentTree(config.docs.src.componentsAll, config.docs.src.components);
+    const templates = helpers.getTemplateTree(config.docs.src.templates);
+    const atoms = helpers.getComponentTree(config.docs.src.atom, '.yml', config.docs.dist.atom);
+    const molecule = helpers.getComponentTree(config.docs.src.molecule, '.yml', config.docs.dist.molecule);
+    const organism = helpers.getComponentTree(config.docs.src.organism, '.yml', config.docs.dist.organism);
 
     // Data
     const data = {
-        templates: templates.map(template => template.replace(/[\\]/g, '/')).sort(),
-        components: components,
+        templates: templates,
+        atoms: atoms,
+        molecule: molecule,
+        organism: organism,
         lastUpdated: moment().tz('Europe/Amsterdam').format('DD-MM-YYYY HH:mm:ss z')
     };
+
 
     const paths = [
         config.docs.src.indexDir,
@@ -42,11 +48,7 @@ gulp.task('docs-render-index', () => {
 
     // Render index template
     return gulp.src(config.docs.src.index)
-        .pipe(render({
-            envOptions: config.nunjucksOptions,
-            path: paths,
-            data: data
-        }))
+        .pipe(render({ path: paths, data: data, manageEnv: envManager }))
         .pipe(gulp.dest(config.docs.dist.base));
 });
 
@@ -54,20 +56,21 @@ gulp.task('docs-render-index', () => {
  * Task: Docs components
  */
 gulp.task('docs-render-components', ['docs-render-component-demos'], () =>
+
     gulp.src([config.docs.src.componentsAll])
-        .pipe(gulpif(util.hasContent, transform((content, file) => util.renderComponent(content, file))))
+        .pipe(gulpif(helpers.hasContent, transform('utf8', (content, file) => helpers.renderComponent(content, file))))
         .pipe(ext('.html'))
         .pipe(gulp.dest(config.docs.dist.components))
+
 );
 
-/**
- * Task: Docs components: Demo
- */
 gulp.task('docs-render-component-demos', () =>
+
     gulp.src([config.docs.src.componentsAll])
-        .pipe(gulpif(util.hasContent, transform((content, file) => util.renderComponentDemo(content, file))))
+        .pipe(gulpif(helpers.hasContent, transform('utf8', (content, file) => helpers.renderComponentDemo(content, file))))
         .pipe(ext('.demo.html'))
         .pipe(gulp.dest(config.docs.dist.components))
+
 );
 
 /**
@@ -89,6 +92,7 @@ gulp.task('docs-watch', cb => {
     const watching = [
         config.docs.src.index,
         config.docs.src.componentsAll,
+        config.docs.src.componentsData,
         config.html.src.templates,
         config.html.src.layout,
         config.html.src.components

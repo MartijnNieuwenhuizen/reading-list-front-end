@@ -1,0 +1,12 @@
+title: Title-h3
+description: An title with the semantic value of an `h3` element
+
+demo: |
+  <div style="background:#f4f4f4">{}</div>
+
+implementation: Provide an `title`
+
+viewsource:
+  - title-h3.njk
+  - title-h3.scss
+  - title-h3.json

@@ -1,17 +1,19 @@
-<form class="add-article" action="POST">
+<form class="add-article" method="POST">
     <fieldset class="add-article__section">
-        <legend class="add-article__title h2">{{ content.title }}</legend>
+        <legend class="add-article__title h2">{{ data.title }}</legend>
 
-        {% for input in viewModel.inputs %}
-            {{ include('01_molecule/label-input/label-input.njk', {
-                viewModel: input
-            }) | safe }}
+        {% for input in data.inputs %}
+            {% molecule 'label-input', input %}
         {% endfor %}
 
         <div class="add-article__submit">
-            {{ include('00_atom/button/button.njk', {
-                content: content
-            }) | safe }}
+            {% atom 'button', 'button.json' %}
         </div>
     </fieldset>
 </form>
+
+
+
+
+
+

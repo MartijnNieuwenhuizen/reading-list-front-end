@@ -1,12 +1,12 @@
 <form class="search-bar" action="">
     <fieldset class="search-bar__field">
-        <legend class="hide--sr">Search</legend>
+        <legend class="hide--sr">{{ data.title }}</legend>
 
-        <label class="hide--sr" for="search">Search</label>
+        <label class="hide--sr" for="search">{{ data.labelTitle }}</label>
 
         <div class="search-bar__flex-container">
             <input class="search-bar__input" id="search" type="text">
-            <button class="search-bar__submit">Search</button>
+            <button class="search-bar__submit">{{ data.ctaTitle }}</button>
         </div>
     </fieldset>
 </form>

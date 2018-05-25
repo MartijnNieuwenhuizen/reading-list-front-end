@@ -1,0 +1,12 @@
+title: Search bar
+description: A search bar with horizontal alignment
+
+demo: |
+  <div style="background:#f4f4f4">{}</div>
+
+implementation: Provide a `title`, `labelTitle` and `buttonTitle`. The `title` and `labelTitle` are hidden for sight but rendered for ScreanReaders and semantics
+
+viewsource:
+  - search-bar.njk
+  - search-bar.json
+  - search-bar.scss
