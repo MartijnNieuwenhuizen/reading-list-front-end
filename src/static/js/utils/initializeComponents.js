@@ -9,7 +9,6 @@ import components from '../../../components';
 export const initializeComponents = context => {
 
     const elements = Array.from(context.querySelectorAll('[data-module]:not([data-initialized])'));
-    console.log('elements: ', elements);
 
     elements.forEach(element => {
 

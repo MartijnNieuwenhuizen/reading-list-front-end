@@ -1,15 +1,6 @@
 'use-strict';
 
-const nunjuckssssss = require('nunjucks');
-
-/**
- * @returns {object} new instance of Nunjucks
- */
-function createNunjucks() {
-    const nunjucks = require('nunjucks');
-    return nunjucks;
-}
-
+const nunjucks = require('nunjucks');
 const nunjucksConfig = {
     atom: '00_atom',
     molecule: '01_molecule',
@@ -17,26 +8,27 @@ const nunjucksConfig = {
 };
 
 /**
- * @param {object} env
- * @param {string} name
+ * @param {*} env
+ * @param {*} name
  */
-function createExtension(env, name) {
+function createNunjucksExtention(env, name) {
     this.tags = [name];
 
-    this.parse = (parser, nodes, lexer) => {
+    this.parse = (parser, nodes) => {
         const token = parser.nextToken();
         const args = parser.parseSignature(null, true);
         parser.advanceAfterBlockEnd(token.value);
-
         return new nodes.CallExtension(this, 'run', args);
     };
 
     this.run = (context, url, body, errorBody) => {
+
         const path = `../components/${nunjucksConfig[name]}/${url}/${url}.njk`;
         const data = {
             data: context.ctx
         };
-        return new nunjuckssssss.runtime.SafeString(env.render(path, data));
+
+        return new nunjucks.runtime.SafeString(env.render(path, data));
     };
 }
 
@@ -49,14 +41,9 @@ class ArticleList {
         this.renderClass = options.renderClass;
         this.renderId = options.renderClass;
         this.dataUrl = options.dataUrl;
-        this.nunjucks = createNunjucks();
+        this.nunjucks = nunjucks;
         this.env = this.configureNunjucksEnv();
         this.element = element;
-
-        fetch(this.allContentDataURl)
-        .then(res => res.json())
-            .then(res => console.log('res: ', res))
-            .catch(err => console.log('err: ', err));
 
         fetch(this.dataUrl)
             .then(res => res.json())
@@ -68,9 +55,9 @@ class ArticleList {
     configureNunjucksEnv() {
         const env = new this.nunjucks.Environment();
 
-        env.addExtension('atom', new createExtension(env, 'atom'));
-        env.addExtension('molecule', new createExtension(env, 'molecule'));
-        env.addExtension('organism', new createExtension(env, 'organism'));
+        env.addExtension('atom', new createNunjucksExtention(env, 'atom'));
+        env.addExtension('molecule', new createNunjucksExtention(env, 'molecule'));
+        env.addExtension('organism', new createNunjucksExtention(env, 'organism'));
 
         return env;
     }
