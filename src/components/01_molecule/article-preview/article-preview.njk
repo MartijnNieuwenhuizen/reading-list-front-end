@@ -1,8 +1,5 @@
 <div class="article-preview">
-
-    {% atom 'title-h3' %}
-
-    {# <div class="article-preview__header">
+    <div class="article-preview__header">
         <a class="article-preview__title" href="{{ data.link }}">
             {% atom 'title-h3', data %}
         </a>
@@ -17,11 +14,11 @@
     </div>
 
     <div class="article-preview__body">
-        {% if data.intro %}
-            {% atom 'intro', data %}
-        {% else %}
+        {# {% if data.intro %} #}
             {% atom 'intro' %}
-        {% endif %}
+        {# {% else %} #}
+            {# {% atom 'intro' %} #}
+        {# {% endif %} #}
     </div>
 
     <div class="article-preview__footer">
@@ -30,5 +27,5 @@
         <span class="article-preview__footer-right">
             {% atom 'date-added', data %}
         </span>
-    </div> #}
+    </div>
 </div>

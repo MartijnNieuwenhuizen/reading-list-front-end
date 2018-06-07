@@ -18,15 +18,15 @@ import './tasks/get-data';
 
 gulp.task('dev', cb => runSequence(
     'clean',
-    ['docs', 'html', 'copy-components', 'img', 'fonts'],
-    ['css', 'js', 'browsersync', 'docs-watch', 'html-watch', 'copy-components-watch', 'img-watch', 'css-watch', 'fonts-watch'],
+    ['docs', 'html', 'copy-components', 'copy-components-data', 'img', 'fonts'],
+    ['css', 'js', 'browsersync', 'docs-watch', 'html-watch', 'copy-components-watch', 'copy-components-data-watch', 'img-watch', 'css-watch', 'fonts-watch'],
     cb
 ));
 
 gulp.task('dist', cb => runSequence(
     'clean',
     'img',
-    ['docs', 'html', 'copy-components', 'css', 'fonts', 'js'],
+    ['docs', 'html', 'copy-components', 'copy-components-data', 'css', 'fonts', 'js'],
     'zip',
     cb
 ));

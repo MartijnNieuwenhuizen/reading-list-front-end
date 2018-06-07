@@ -101,13 +101,15 @@ module.exports = {
             componentsData: `${base.src}/components/**/*.json`,
             component: `${base.src}/components`,
             componentCopy: `${base.src}/components/**/*.njk`,
+            componentDataCopy: `${base.src}/components/**/*.json`,
             atom: '00_atom',
             molecule: '01_molecule',
             organism: '02_organism'
         },
         dist: {
             base: `${base.dist}/templates`,
-            componentsDist: `${base.dist}/components`
+            componentsDist: `${base.dist}/components`,
+            componentDataCopyDir: `${base.dist}/components`
         },
         baseUri: '/'
     },
