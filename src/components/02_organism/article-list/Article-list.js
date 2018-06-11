@@ -1,5 +1,8 @@
 'use-strict';
 
+import observer from '../../../static/js/utils/Observer';
+import store from '../../../static/js/lib/store';
+
 const nunjucks = require('nunjucks');
 const nunjucksConfig = {
     atom: '00_atom',
@@ -35,21 +38,30 @@ function createNunjucksExtention(env, name) {
 class ArticleList {
 
     constructor(element, options) {
-        this.renderName = options.renderName;
-        this.renderType = options.renderType;
-        this.renderContainingElement = options.renderContainingElement;
-        this.renderClass = options.renderClass;
-        this.renderId = options.renderClass;
-        this.dataUrl = options.dataUrl;
+        this.options = options;
+        this.element = element;
         this.nunjucks = nunjucks;
         this.env = this.configureNunjucksEnv();
-        this.element = element;
 
+        this.configure();
+        this.getData();
+        this.watch();
+    }
+
+    configure() {
+        this.renderName = this.options.renderName;
+        this.renderType = this.options.renderType;
+        this.renderContainingElement = this.options.renderContainingElement;
+        this.renderClass = this.options.renderClass;
+        this.renderId = this.options.renderClass;
+        this.dataUrl = this.options.dataUrl;
+    }
+
+    getData() {
         fetch(this.dataUrl)
             .then(res => res.json())
-            .then(res => this.render(options, res))
+            .then(res => this.render(this.options, res))
             .catch(err => console.log('err: ', err));
-
     }
 
     configureNunjucksEnv() {
@@ -65,25 +77,37 @@ class ArticleList {
     render(options, allArticlesData) {
         const template = `../components/${nunjucksConfig[options.renderType]}/${options.renderName}/${options.renderName}.njk`;
 
-        const allArticlesAsHtml = allArticlesData.reduce((reducedArticlesAsHtml, newArticleData) => {
-            let newArticleAsHtml = '';
-            if (this.renderContainingElement) {
-                const customClass = this.renderClass ? `class="${this.renderClass}"` : '';
-                const customId = this.renderClass ? `id="${this.renderClass}"` : '';
 
-                newArticleAsHtml = `
-                    <${this.renderContainingElement} ${customClass} ${customId}>
-                        ${this.env.render(template, newArticleData)}
-                    </${this.renderContainingElement}>
-                `;
-            } else {
-                newArticleAsHtml = `${this.env.render(template, newArticleData)}`;
-            }
+        const allArticlesAsHtml = allArticlesData
+            .sort((oldArticleData, newArticleData) => new Date(newArticleData.dateAdded) - new Date(oldArticleData.dateAdded))
+            .reduce((reducedArticlesAsHtml, newArticleData) => {
+                let newArticleAsHtml = '';
+                if (this.renderContainingElement) {
+                    const customClass = this.renderClass ? `class="${this.renderClass}"` : '';
+                    const customId = this.renderClass ? `id="${this.renderClass}"` : '';
 
-            return reducedArticlesAsHtml += newArticleAsHtml;
-        }, '');
+                    newArticleAsHtml = `
+                        <${this.renderContainingElement} ${customClass} ${customId}>
+                            ${this.env.render(template, newArticleData)}
+                        </${this.renderContainingElement}>
+                    `;
+                } else {
+                    newArticleAsHtml = `${this.env.render(template, newArticleData)}`;
+                }
+
+                return reducedArticlesAsHtml += newArticleAsHtml;
+            }, '');
 
         this.element.innerHTML = allArticlesAsHtml;
+    }
+
+    watch() {
+        observer.subscribe(store, 'update-article-list', () => this.update());
+    }
+
+    update() {
+        const articlesData = store.get('articles');
+        this.render(this.options, articlesData);
     }
 
 }

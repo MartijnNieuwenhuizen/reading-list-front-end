@@ -1,7 +1,8 @@
 /* stylelint-disable scss/dollar-variable-colon-space-after */
 
 // Colors
-$color-primary:         hsla(37, 91%, 55%, 100%);
+// $color-primary:         rgb(204, 154, 17);
+$color-primary:         #FC7412;
 $color-primary-lighter:   lighten($color-primary, 20%);
 $color-primary-darker:    darken($color-primary, 20%);
 $color-secondary:       lime;

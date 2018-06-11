@@ -1,0 +1,8 @@
+.base-url {
+    font-size: $font-size-s;
+    text-decoration: none;
+
+    @include hocus {
+        text-decoration: underline;
+    }
+}

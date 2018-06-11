@@ -10,5 +10,11 @@
         data-data-url="http://localhost:8080/"
     >
 
+        {# {%- for article in data.articles -%}
+            <li class="article-list__item">
+                {% molecule 'article-preview', article %}
+            </li>
+        {%- endfor -%} #}
+
     </ol>
 </section>

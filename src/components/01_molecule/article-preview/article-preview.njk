@@ -1,31 +1,21 @@
 <div class="article-preview">
-    <div class="article-preview__header">
-        <a class="article-preview__title" href="{{ data.link }}">
-            {% atom 'title-h3', data %}
-        </a>
+    <a class="article-preview__title" href="{{ link }}">
+        {% atom 'title-h3', data %}
+    </a>
 
-        <div class="article-preview__reading-time">
-            {% atom 'reading-time', data %}
-        </div>
+    <div class="article-preview__author">
+        {% atom 'author', data %}
+    </div>
+
+    <div class="article-preview__link">
+        {% atom 'base-url', data %}
+    </div>
+
+    <div class="article-preview__time">
+        {% atom 'reading-time', data %}
     </div>
 
     <div class="article-preview__tags">
         {% atom 'tags', data %}
-    </div>
-
-    <div class="article-preview__body">
-        {# {% if data.intro %} #}
-            {% atom 'intro' %}
-        {# {% else %} #}
-            {# {% atom 'intro' %} #}
-        {# {% endif %} #}
-    </div>
-
-    <div class="article-preview__footer">
-        {% atom 'cta', data %}
-
-        <span class="article-preview__footer-right">
-            {% atom 'date-added', data %}
-        </span>
     </div>
 </div>

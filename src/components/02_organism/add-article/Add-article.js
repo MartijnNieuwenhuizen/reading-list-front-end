@@ -1,3 +1,6 @@
+import observer from '../../../static/js/utils/Observer';
+import store from '../../../static/js/lib/store';
+
 /**
  * @param {object} data - all values from the form
  * @returns {object}
@@ -36,8 +39,13 @@ class AddArticle {
 
         const options = createPostOptions(values);
         fetch(this.element.action, options)
-            .then(data => console.log('then: ', data, data.body))
+            .then(res => res.json())
+            .then(data => {
+                store.set('articles', data);
+                observer.publish(store, 'update-article-list');
+            })
             .catch(error => console.error('catch: ', error));
+
         event.preventDefault();
     }
 }

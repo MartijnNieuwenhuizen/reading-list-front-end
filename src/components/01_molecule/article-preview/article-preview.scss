@@ -1,57 +1,39 @@
+$horizontal-padding: 1.4375rem;
+$vertical-padding: 1.4375rem;
+
 .article-preview {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
 
-    border: $default-border-width solid $color-black;
+    padding: $horizontal-padding $vertical-padding;
+
+    background-color: $color-primary;
     border-radius: $default-border-radius;
-    background-color: $color-white;
+    color: $color-white;
 
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 50%;
-        width: 5.25rem;
-        height: 2.125rem;
-        transform: translate(-50%, -65%);
-        background-image: url("../img/icons/glasses.svg");
-    }
-
-    &__header {
-        display: flex;
-        align-items: center;
-        padding: .8rem;
-    }
     &__title {
-        flex-grow: 1;
-        padding: 0 .5em 0 0;
+        display: block;
         text-decoration: none;
-        @include hocus {
-            text-decoration: underline;
-        }
-    }
-    &__reading-time {
-        flex-shrink: 0;
     }
 
+    &__time {
+        position: absolute;
+        top: $horizontal-padding;
+        right: $vertical-padding;
+    }
+
+    &__author {
+        margin-left: auto;
+    }
+
+    &__link {
+        order: -1;
+    }
 
     &__tags {
-        padding: .4rem .8rem;
-        border-top: 1px solid $color-black;
-        border-bottom: 1px solid $color-black;
-    }
-
-    &__body {
-        padding: 0 .8rem;
-    }
-
-    &__footer {
-        display: flex;
-        align-items: center;
-        padding: 0 .8rem .8rem;
-    }
-
-    &__footer-right {
-        flex-grow: 1;
-        text-align: right;
+        margin-top: 2rem;
     }
 }
