@@ -1,7 +1,7 @@
 {
   "name": "frontend-boilerplate",
   "description": "An opinionated blueprint environment to quick start new front-end codebases",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/mirabeau-nl/frontend-boilerplate.git"
