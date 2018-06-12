@@ -25,6 +25,7 @@ class AddArticle {
         this.options = options;
 
         this.addEventListeners();
+        observer.subscribe(store, 'update-article-list', () => this.update());
     }
 
     addEventListeners() {
@@ -47,6 +48,10 @@ class AddArticle {
             .catch(error => console.error('catch: ', error));
 
         event.preventDefault();
+    }
+
+    update() {
+        this.userInputs.forEach(input => input.value = '');
     }
 }
 

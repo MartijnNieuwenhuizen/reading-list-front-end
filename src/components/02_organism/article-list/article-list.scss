@@ -1,4 +1,8 @@
 $max-single-item-width: 28rem;
+$card-width: 20rem;
+
+$primeNumbers: (2, 5, 11, 17, 23, 31, 41, 47, 59, 67, 73, 83, 97, 103, 109);
+// $fibonacci: (1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946);
 
 .article-list {
 
@@ -22,17 +26,49 @@ $max-single-item-width: 28rem;
         display: inline-block;
         margin: 1em;
         padding: 0;
+        overflow: hidden;
 
         list-style-type: none;
+        transition: .5s opacity;
 
         @supports (display: grid) {
             max-width: 100%;
             margin: 0;
         }
 
-        transition: .5s opacity;
+        @each $value in $primeNumbers {
+            &:nth-of-type(#{$value + 1}) {
+                grid-column: span 2;
+            }
+
+            &:nth-of-type(#{$value + 3}) {
+                grid-row: span 2;
+            }
+
+            &:nth-of-type(#{$value}) {
+                grid-row: span 2;
+                grid-column: span 2;
+            }
+        }
     }
+
     &__item--hide {
         opacity: 0;
+    }
+
+    &__grid-go-nuts {
+        display: grid;
+        grid-row-gap: 2rem;
+        grid-auto-flow: dense;
+
+        grid-template-columns: repeat(auto-fit, minmax($card-width, 1fr));
+        // grid-template-rows: repeat($card-width);
+
+        grid-auto-rows: $card-width;
+
+
+
+        // grid-template-rows: repeat(auto-fit, minmax($card-width, 1fr));
+        // grid-template-columns: repeat(auto-fit, $card-width);
     }
 }
