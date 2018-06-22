@@ -1,4 +1,8 @@
-<form class="search-bar" action="">
+<form class="search-bar" action=""
+  data-module="01_molecule/search-bar/search-bar"
+  data-target="article-list__list"
+  data-input-element="search-bar__input">
+
     <fieldset class="search-bar__field">
         <legend class="hide--sr">{{ data.title }}</legend>
 
@@ -9,4 +13,5 @@
             <button class="search-bar__submit">{{ data.ctaTitle }}</button>
         </div>
     </fieldset>
+
 </form>

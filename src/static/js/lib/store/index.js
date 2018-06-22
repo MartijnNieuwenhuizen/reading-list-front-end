@@ -10,6 +10,10 @@ class Store {
         this.store.set(key, value);
     }
 
+    setMultiple(key, values) {
+        this.store.set(key, values);
+    }
+
     get(key) {
         if (this.store.has(key)) {
             return this.store.get(key);

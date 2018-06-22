@@ -1,0 +1,15 @@
+{
+  "addLink": {
+    "label": "A",
+    "href": "#add-article"
+  },
+  "search": {
+    "label": "S",
+    "href": "#search"
+  },
+  "toggleLayout": {
+    "label": "T",
+    "href": "#toggle-layout"
+  },
+  "position": "right"
+}

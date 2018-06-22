@@ -55,12 +55,22 @@ class ArticleList {
         this.renderClass = this.options.renderClass;
         this.renderId = this.options.renderClass;
         this.dataUrl = this.options.dataUrl;
+        this.articles = [];
     }
 
     getData() {
         fetch(this.dataUrl)
             .then(res => res.json())
+            .then(res => {
+                store.setMultiple('articles', res);
+                observer.publish(store, 'update-article-list');
+                return res;
+            })
             .then(res => this.render(this.options, res))
+            .then(res => {
+                this.cacheCurrentRenderedListItems();
+                return res;
+            })
             .catch(err => console.log('err: ', err));
     }
 
@@ -84,7 +94,7 @@ class ArticleList {
                 let newArticleAsHtml = '';
                 if (this.renderContainingElement) {
                     const customClass = this.renderClass ? `class="${this.renderClass}"` : '';
-                    const customId = this.renderClass ? `id="${this.renderClass}"` : '';
+                    const customId = newArticleData.slug ? `id="${newArticleData.slug}"` : '';
 
                     newArticleAsHtml = `
                         <${this.renderContainingElement} ${customClass} ${customId}>
@@ -103,11 +113,29 @@ class ArticleList {
 
     watch() {
         observer.subscribe(store, 'update-article-list', () => this.update());
+        observer.subscribe(store, 'search-action', () => this.updateBasedOnSearchInput());
     }
 
     update() {
         const articlesData = store.get('articles');
         this.render(this.options, articlesData);
+    }
+
+    updateBasedOnSearchInput() {
+        const slugs = store.get('search-filtered-articles');
+
+        this.articles.forEach(article => {
+            if (article.classList.contains('article-list__item--hide')) {
+                article.classList.remove('article-list__item--hide');
+            }
+            if (!slugs.includes(article.id)) {
+                article.classList.add('article-list__item--hide');
+            }
+        });
+    }
+
+    cacheCurrentRenderedListItems() {
+        this.articles = Array.from(this.element.querySelectorAll(`.${this.renderClass}`));
     }
 
 }
