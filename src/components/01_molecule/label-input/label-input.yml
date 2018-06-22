@@ -1,0 +1,11 @@
+title: Label input
+description: A combination of an basic `label` and `input` element, linked by the `slug`
+
+demo: |
+  <div style="background:#f4f4f4; padding:1em .5em .5em .5em; box-sizing:border-box;">{}</div>
+
+implementation: Provide a `label`, `slug` and `type` (used as type of input)
+
+viewsource:
+  - label-input.njk
+  - label-input.scss

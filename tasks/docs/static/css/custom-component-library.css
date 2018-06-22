@@ -1,0 +1,8 @@
+@media (min-width: 400px) {
+    .parts-preview-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, auto);
+        grid-auto-flow: column;
+    }
+}

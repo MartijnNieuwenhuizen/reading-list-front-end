@@ -1,12 +1,20 @@
 <section class="article-list">
-    <h2 class="article-list__title">{{ content.title }}</h2>
-    <ol class="article-list__list">
-        {%- for article in viewModel.articles -%}
+    <h2 class="article-list__title">{{ data.title }}</h2>
+    <ol class="article-list__list article-list__grid-go-nuts"
+        data-module="02_organism/article-list/Article-list"
+        data-render-name="article-preview"
+        data-render-type="molecule"
+        data-render-class="article-list__item"
+        data-render-id=""
+        data-render-containing-element="li"
+        data-data-url="http://localhost:8080/"
+    >
+
+        {# {%- for article in data.articles -%}
             <li class="article-list__item">
-                {{ include('01_molecule/article-preview/article-preview.njk', {
-                    viewModel: article
-                }) | safe }}
+                {% molecule 'article-preview', article %}
             </li>
-        {%- endfor -%}
+        {%- endfor -%} #}
+
     </ol>
 </section>

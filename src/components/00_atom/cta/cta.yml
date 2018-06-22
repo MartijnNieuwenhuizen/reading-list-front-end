@@ -1,0 +1,12 @@
+title: CTA (Call to action)
+description: A simple link with the styling of an follow-up action on the same domain. The link will include an arrow on the right side of the text
+
+demo: |
+  <div style="background:#f4f4f4;">{}</div>
+
+implementation: Provide an `title` and `src`
+
+viewsource:
+  - cta.njk
+  - cta.scss
+  - cta.json

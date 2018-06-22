@@ -14,18 +14,19 @@ import './tasks/js';
 import './tasks/upload';
 import './tasks/githooks';
 import './tasks/zip';
+import './tasks/get-data';
 
 gulp.task('dev', cb => runSequence(
     'clean',
-    ['docs', 'html', 'img', 'fonts'],
-    ['css', 'js', 'browsersync', 'docs-watch', 'html-watch', 'img-watch', 'css-watch', 'fonts-watch'],
+    ['docs', 'html', 'copy-components', 'copy-components-data', 'img', 'fonts'],
+    ['css', 'js', 'browsersync', 'docs-watch', 'html-watch', 'copy-components-watch', 'copy-components-data-watch', 'img-watch', 'css-watch', 'fonts-watch'],
     cb
 ));
 
 gulp.task('dist', cb => runSequence(
     'clean',
     'img',
-    ['docs', 'html', 'css', 'fonts', 'js'],
+    ['docs', 'html', 'copy-components', 'copy-components-data', 'css', 'fonts', 'js'],
     'zip',
     cb
 ));
@@ -43,5 +44,9 @@ gulp.task('test', [
 gulp.task('upload', cb => runSequence(
     'dist',
     'file-upload',
+    cb
+));
+
+gulp.task('go-go-get-data', cb => runSequence(
     cb
 ));

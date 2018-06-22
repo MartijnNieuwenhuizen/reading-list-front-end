@@ -1,0 +1,12 @@
+title: Date added
+description: An representation of the date in `dd-mm-yyyyy` format including a prefix
+
+demo: |
+  <div style="background:#f4f4f4;">{}</div>
+
+implementation: Provide an `date` and `prefix`
+
+viewsource:
+  - date-added.njk
+  - date-added.scss
+  - date-added.json

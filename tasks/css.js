@@ -16,15 +16,14 @@ import sassGlob from 'gulp-sass-glob';
  */
 gulp.task('css', () => {
     const postcssProcessors = [
-        autoprefixer({
-            browsers: config.autoprefixer.browsers
-        })
+        autoprefixer()
     ];
 
-    return gulp.src(config.src.main)
+    return gulp.src(config.src.static)
         .pipe(sassGlob())
         .pipe(sass().on('error', sass.logError))
         .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
         .pipe(postcss(postcssProcessors))
         .pipe(cleanCSS())
         .pipe(sourcemaps.write('.'))
@@ -47,8 +46,7 @@ gulp.task('css-lint', () => {
     return gulp.src([
         config.src.staticAll,
         config.src.components,
-        `!${config.src.vendor}`,
-        `!${config.src.sprite}`
+        `!${config.src.vendor}`
     ])
         .pipe(stylelint({
             failAfterError: true,

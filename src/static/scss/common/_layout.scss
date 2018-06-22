@@ -1,0 +1,38 @@
+.layout {
+    padding: 0 0 3.9rem;
+
+    @media (min-width: $bp-align-aside) {
+        display: grid;
+        grid-template-columns: auto 25rem; // @TODO enhance with better right value
+    }
+
+    &__main {
+        padding: 0 1rem;
+        @media (min-width: $bp-align-aside) {
+            padding: 0 2rem;
+        }
+    }
+
+    &__aside {
+        @media (min-width: $bp-align-aside) {
+            padding: 2rem 0 0;
+            border-left: $half-border-width solid $color-black;
+        }
+    }
+
+    &__sticky-footer {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        border-top: 1px solid $color-black;
+        background-color: $color-white;
+        box-shadow: 0 -.2rem .3rem rgba($color-black, .3);
+    }
+
+    &__search-overview {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+    }
+}

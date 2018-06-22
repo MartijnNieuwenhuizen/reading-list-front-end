@@ -75,12 +75,11 @@ class Observer {
      * Publish an event
      * @method publish
      * @memberof Observer
-     * @param {Object} subject - Object to fire the event on.
+     * @param {Object} subject - Object to fire the event on. (target / Emitter)
      * @param {String} event - Event type to fire.
      * @param {...*} args - Parameters to apply to the fn of the subscription object
      */
     publish(subject, event, ...args) {
-
         if (this._subscriptions.has(subject)) {
             this._subscriptions.get(subject)
                 .filter(subscription => subscription.event === event)

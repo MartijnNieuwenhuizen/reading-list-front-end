@@ -1,0 +1,17 @@
+<form class="search-bar" action=""
+  data-module="01_molecule/search-bar/search-bar"
+  data-target="article-list__list"
+  data-input-element="search-bar__input">
+
+    <fieldset class="search-bar__field">
+        <legend class="hide--sr">{{ data.title }}</legend>
+
+        <label class="hide--sr" for="search">{{ data.labelTitle }}</label>
+
+        <div class="search-bar__flex-container">
+            <input class="search-bar__input" id="search" type="text">
+            <button class="search-bar__submit">{{ data.ctaTitle }}</button>
+        </div>
+    </fieldset>
+
+</form>

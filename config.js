@@ -4,12 +4,17 @@ import dotenv from 'dotenv';
 dotenv.load({ silent: true });
 
 const base = {
-    src: `${__dirname}/src`,
-    dist: `${__dirname}/dist`,
-    docs: `${__dirname}/tasks/docs`
+    src: './src',
+    dist: './dist',
+    docs: './tasks/docs'
 };
 
 module.exports = {
+    base: {
+        src: base.src,
+        dist: base.dist,
+        docs: base.docs
+    },
 
     browsersync: {
         server: {
@@ -27,23 +32,11 @@ module.exports = {
     },
 
     css: {
-        autoprefixer: {
-            browsers: [
-                'last 2 versions',
-                '> 1% in NL',
-                'IE >= 9',
-                'iOS >= 6',
-                'Safari >= 6',
-                'Firefox ESR'
-            ]
-        },
         src: {
-            static: `${base.src}/static/css/**/!(_)*.scss`,
-            main: `${base.src}/static/css/all.scss`,
-            staticAll: `${base.src}/static/css/**/*.scss`,
+            static: `${base.src}/static/scss/**/!(_)*.scss`,
+            staticAll: `${base.src}/static/scss/**/*.scss`,
             components: `${base.src}/components/**/*.scss`,
-            vendor: `${base.src}/static/css/vendor/**/*.scss`,
-            sprite: `${base.src}/static/css/_sprite.scss`
+            vendor: `${base.src}/static/scss/vendor/**/*.scss`
         },
         dist: {
             base: `${base.dist}/static/css`
@@ -56,22 +49,24 @@ module.exports = {
             indexDir: base.docs,
             layoutDir: `${base.docs}/layout`,
             templates: `${base.src}/templates`,
-            templatesAll: `${base.src}/templates/**/!(_)**.njk`,
             statics: `${base.docs}/static/**`,
-            component: `${base.docs}/component-detail.njk`,
-            demo: `${base.docs}/component-demo.njk`,
+            component: 'component-detail.njk',
+            preview: 'component-preview.njk',
             components: `${base.src}/components`,
-            componentsAll: `${base.src}/components/**/!(_)*.yml`
+            atom: `${base.src}/components/00_atom`,
+            molecule: `${base.src}/components/01_molecule`,
+            organism: `${base.src}/components/02_organism`,
+            componentsAll: `${base.src}/components/**/*.yml`,
+            componentsData: `${base.src}/components/**/*.json`
         },
         dist: {
             base: base.dist,
             index: `${base.dist}/index.html`,
             static: `${base.dist}/docs/static/`,
-            components: `${base.dist}/docs/components/`
-        },
-        dataFileNames: {
-            content: '-content.nl.json',
-            data: '-data.json'
+            components: `${base.dist}/docs/components/`,
+            atom: '/docs/components/00_atom/',
+            molecule: '/docs/components/01_molecule/',
+            organism: '/docs/components/02_organism/'
         }
     },
 
@@ -96,70 +91,35 @@ module.exports = {
 
     html: {
         src: {
-            templates: `${base.src}/templates/**/!(_)*.njk`,
+            templates: `${base.src}/templates/**/*.njk`,
             templatesDir: `${base.src}/templates`,
+            templatesData: `${base.src}/templates/**/*.json`,
             layout: `${base.src}/layout/*.njk`,
             layoutDir: `${base.src}/layout`,
             components: `${base.src}/components/**/*.njk`,
             componentsDir: `${base.src}/components`,
-            componentsJSON: `${base.src}/(templates|components)/**/*.json`
+            componentsData: `${base.src}/components/**/*.json`,
+            component: `${base.src}/components`,
+            componentCopy: `${base.src}/components/**/*.njk`,
+            componentDataCopy: `${base.src}/components/**/*.json`,
+            atom: '00_atom',
+            molecule: '01_molecule',
+            organism: '02_organism'
         },
         dist: {
-            base: `${base.dist}/templates`
+            base: `${base.dist}/templates`,
+            componentsDist: `${base.dist}/components`,
+            componentDataCopyDir: `${base.dist}/components`
         },
-        baseUri: {
-            demo: '../../../',
-            templates: '/'
-        }
+        baseUri: '/'
     },
 
     img: {
         src: {
-            all: `${base.src}/static/img/{!(puv-logos),}/*.{svg,png,jpg,gif,webp}`,
-            imgSprite: `${base.src}/static/img/sprite/**/*.svg`,
-            puvLogos: `${base.src}/static/img/puv-logos/*.png`
+            all: `${base.src}/static/img/**/*.{svg,png,jpg,gif,webp}`
         },
         dist: {
-            base: `${base.dist}/static/img`,
-            spriteBase: `${base.src}/static`,
-            puvLogosBase: `${base.dist}/static/img/puv-logos`
-        },
-        svgSpriteConfig: {
-            mode: {
-                css: {
-                    sprite: '../img/sprite.svg',
-                    bust: false,
-                    render: {
-                        scss: {
-                            dest: '_sprite.scss'
-                        }
-                    }
-                }
-            }
-        },
-        sharpOps: (sharp, contents) => {
-
-            const [width, height] = [400, 100];
-            const transparent = { r: 0, g: 0, b: 0, alpha: 0 };
-            const bgConfig = {
-                width: width,
-                height: height,
-                channels: 4,
-                background: transparent
-            };
-
-            const createBackground = imgBuffer => {
-                return sharp({ create: bgConfig})
-                    .overlayWith(imgBuffer, { gravity: sharp.gravity.northwest })
-                    .png()
-                    .toBuffer();
-            };
-
-            return sharp(contents)
-                .resize(width, height)
-                .max()
-                .toBuffer()
-                .then(createBackground);
+            base: `${base.dist}/static/img`
         }
     },
 
@@ -183,10 +143,6 @@ module.exports = {
             transform: ['babelify', 'require-globify']
         },
         eslintAutofix: false
-    },
-
-    nunjucksOptions: {
-        throwOnUndefined: false
     },
 
     upload: {
@@ -213,6 +169,11 @@ module.exports = {
         dist: {
             base: base.dist
         }
+    },
+
+    getData: {
+        dest: 'src/components/02_organism/article-list/article-list.json',
+        url: 'http://localhost:8080/'
     }
 
 };

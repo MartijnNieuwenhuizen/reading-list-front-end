@@ -3,24 +3,19 @@
 {% block body %}
     <main class="layout layout--home">
         <div class="layout__main">
-            {{ include('02_organism/article-list/article-list.njk', {
-                viewModel: json('02_organism/article-list/article-list-data.json'),
-                content: json('02_organism/article-list/article-list-content.nl.json')
-            }) | safe }}
+            {% organism 'article-list', 'article-list.json' %}
         </div>
 
         <div class="layout__aside">
-            {{ include('02_organism/add-article/add-article.njk', {
-                viewModel: json('02_organism/add-article/add-article-data.json'),
-                content: json('02_organism/add-article/add-article-content.nl.json')
-            }) | safe }}
+            {% organism 'add-article', 'add-article.json' %}
         </div>
 
         <div class="layout__sticky-footer">
-            {{ include('02_organism/search-bar/search-bar.njk', {
-                viewModel: json('02_organism/search-bar/search-bar-data.json'),
-                content: json('02_organism/search-bar/search-bar-content.nl.json')
-            }) | safe }}
+            {% molecule 'search-bar', 'search-bar.json' %}
+        </div>
+
+        <div class="layout__search-overview">
+            {% organism 'nav-sidebar', 'nav-sidebar.json' %}
         </div>
     </main>
 {% endblock %}

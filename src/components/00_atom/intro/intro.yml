@@ -1,0 +1,12 @@
+title: Intro
+description: An into of only text, to be used for e.g. an article
+
+demo: |
+  <div style="background:#f4f4f4;">{}</div>
+
+implementation: The element can render multiple paragraphs, they need to be provided as an array of texts
+
+viewsource:
+  - intro.njk
+  - intro.scss
+  - intro.json

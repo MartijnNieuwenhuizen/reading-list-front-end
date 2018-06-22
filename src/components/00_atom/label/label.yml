@@ -1,0 +1,12 @@
+title: Label
+description: An basic label, mostly used in a `form` as description of an `input`
+
+demo: |
+  <div style="background:#f4f4f4;">{}</div>
+
+implementation: Provide an `slug` and `label`
+
+viewsource:
+  - label.njk
+  - label.scss
+  - label.json

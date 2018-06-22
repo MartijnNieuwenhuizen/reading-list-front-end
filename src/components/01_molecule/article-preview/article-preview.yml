@@ -1,0 +1,11 @@
+title: Article preview
+description: An preview of an article containing `title`, `tags`, `reading-time`, `intro`, `cta`, and `date-added`. The preview item is surrounded by a border and at the top there is a visualisation of a pair of glasses.
+
+demo: |
+  <div style="background:#f4f4f4; padding:1em 0 0 0; box-sizing:border-box;">{}</div>
+
+implementation: Provide `a lot, add the entire view model here` or let each atom provide it's own data
+
+viewsource:
+  - article-preview.njk
+  - article-preview.scss

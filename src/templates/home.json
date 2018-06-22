@@ -1,0 +1,29 @@
+{
+  "mainTitle": "Welkom op Mijnpensioenoverzicht.nl",
+  "pageSections": [
+    {
+      "title": "U vindt op deze site het antwoord op de volgende vragen:",
+      "bullets": [
+        "Hoeveel AOW en pensioen heb ik opgebouwd?",
+        "Wat is mijn te bereiken pensioen?",
+        "Wat krijgen mijn nabestaanden als ik overlijd?",
+        "Welke gebeurtenissen zijn van invloed op mijn pensioen?"
+      ]
+    },
+    {
+      "title": "Wat u niet ziet op Mijnpensioenoverzicht.nl:",
+      "bullets": [
+        "De AOW en het pensioen dat u al ontvangt.",
+        "Wat u zelf als aanvullend pensioen heeft geregeld."
+      ]
+    },
+    {
+      "title": "Meer weten?",
+      "bullets": [
+        "Bekijk dan onze <a href=\"https://www.pensioenkijker.nl/home/animatie\" target=\"_blank\">animatie</a>.",
+        "Vragen? Neem dan contact op met onze Servicedesk via 020-7512870 (bereikbaar tijdens werkdagen tussen 8.30 en 17.00 uur)."
+      ]
+    }
+  ],
+  "b": [{}, {}, {}, {}, {}]
+}

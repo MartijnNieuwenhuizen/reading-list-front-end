@@ -1,5 +1,6 @@
 # IDE's
 .idea
+.vscode/
 .project
 *.sublime-*
 
@@ -28,3 +29,4 @@ Thumbs.db
 
 # Other
 .env
+package-lock.json

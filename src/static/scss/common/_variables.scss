@@ -1,0 +1,37 @@
+/* stylelint-disable scss/dollar-variable-colon-space-after */
+
+// Colors
+// $color-primary:         rgb(204, 154, 17);
+$color-primary:         #FC7412;
+$color-primary-lighter:   lighten($color-primary, 20%);
+$color-primary-darker:    darken($color-primary, 20%);
+$color-secondary:       lime;
+$color-secondary-lighter: lighten($color-secondary, 20%);
+$color-secondary-darker:  darken($color-secondary, 20%);
+$color-black:           #363636;
+$color-gray:            #9b9b9b;
+$color-white:           #fff;
+
+// Gutters
+$gutter:    1rem;
+$gutter-s:  $gutter / 2;
+$gutter-m:  $gutter;
+$gutter-l:  $gutter * 1.5;
+$gutter-xl: $gutter * 2;
+
+// Transitions
+$default-transition-easing: cubic-bezier(.215, .61, .355, 1);
+$default-shake-easing:      cubic-bezier(.36, .07, .19, .97);
+$default-transition-time:   150ms;
+
+// Animations
+$default-animation-time: 260ms;
+
+// Bla
+$default-border-width:  .55rem;
+$half-border-width:     .275rem;
+$default-border-radius: 7px;
+
+// Breakpoints
+$bp-article-list-grid-activated: 500px;
+$bp-align-aside:                 800px;

@@ -1,5 +1,5 @@
 import { js as config } from '../config';
-import { collectUsedBabelHelpers, writeBabelHelpers } from '../tasks/util/js';
+import { collectUsedBabelHelpers, writeBabelHelpers } from '../tasks/util/taskhelpers';
 import gulp from 'gulp';
 import eslint from 'gulp-eslint';
 import mocha from 'gulp-mocha';
@@ -29,6 +29,7 @@ gulp.task('js', ['js-browserify']);
 gulp.task('js-lint', () => {
     const src = [
         './gulpfile.babel.js',
+        './config.js',
         './tasks/**/*.js',
         config.src.all,
         config.src.components,

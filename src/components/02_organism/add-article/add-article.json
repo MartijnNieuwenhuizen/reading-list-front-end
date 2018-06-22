@@ -1,0 +1,30 @@
+{
+  "title": "Add article",
+  "cta": "Add",
+  "inputs": [
+    {
+      "label":"Title",
+      "slug":"title",
+      "type": "text",
+      "name": "title"
+    },
+    {
+      "label":"URL",
+      "slug":"url",
+      "type": "url",
+      "name": "url"
+    },
+    {
+      "label":"Author",
+      "slug":"author",
+      "type": "text",
+      "name": "author"
+    },
+    {
+      "label":"Tags",
+      "slug":"tags",
+      "type": "text",
+      "name": "tags"
+    }
+  ]
+}
