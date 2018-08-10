@@ -35,28 +35,45 @@ class SearchBar {
         // Implement debounce pattern here!
         // Add smart filtering here: # is only search in tags in following words
 
+        const getSlug = item => item.slug;
+        const valueToLowerCase = value => value.toLowerCase();
         const mapPropertiesToArray = article => {
-            article.searchTerms = [article.author, article.link, article.readingTimeInMinutes, article.title, ...article.tags];
+            article.searchTerms = [...article.author.split(' '), article.link, article.readingTimeInMinutes, ...article.title.split(' '), ...article.tags];
+            console.log('article.searchTerms: ', article.searchTerms);
             return article;
         };
-        const allToLowerCase = value => value.toLowerCase();
+        const allSearchTermsToLowerCase = article => {
+            article.searchTerms = article.searchTerms.map(valueToLowerCase);
+            return article;
+        };
         const filterOnSearchTerms = (article, terms) => Boolean(article.searchTerms.filter(value => value.includes(terms)).length);
+        // const filterOnSearchTerms = (article, terms) => Boolean(article.searchTerms.filter(value => terms.filter(term => value.includes(term).length)).length);
         const filterOnEmptyItems = item => item;
 
         const filterValues = this.inputTrigger.value
             .split(' ')
             .filter(filterOnEmptyItems)
-            .map(allToLowerCase);
+            .map(valueToLowerCase);
 
         const filteredArticlesSlugs = this.articlesToSearch
             .map(mapPropertiesToArray)
+            .map(allSearchTermsToLowerCase)
             .filter(article => filterOnSearchTerms(article, filterValues))
-            .map(item => item.slug);
+            .map(getSlug);
 
         store.set('search-filtered-articles', filteredArticlesSlugs);
         observer.publish(store, 'search-action');
     }
 
 }
+
+
+
+// const arrayOne = ['this', 'is', 'th'];
+// const arrayTwo = ['this is the future', 'welcome to the future'];
+
+// const blaaaat = arrayTwo.some(item => arrayOne.includes(item));
+// console.log('blaaaat: ', blaaaat);
+
 
 export default SearchBar;

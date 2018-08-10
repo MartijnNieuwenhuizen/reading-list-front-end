@@ -33,9 +33,10 @@ class AddArticle {
     }
 
     handlePostAction(event) {
-        const values = this.userInputs.reduce((acc, obj) => {
-            acc[obj.name] = obj.value;
-            return acc;
+        const values = this.userInputs.reduce((accumulator, obj) => {
+            accumulator[obj.name] = obj.value;
+
+            return accumulator;
         }, {});
 
         const options = createPostOptions(values);
@@ -43,7 +44,7 @@ class AddArticle {
             .then(res => res.json())
             .then(data => {
                 store.set('articles', data);
-                observer.publish(store, 'update-article-list');
+                observer.publish(store, 'update-article-list', data);
             })
             .catch(error => console.error('catch: ', error));
 

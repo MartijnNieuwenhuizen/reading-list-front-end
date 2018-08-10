@@ -6,6 +6,9 @@
     "type": "git",
     "url": "https://github.com/mirabeau-nl/frontend-boilerplate.git"
   },
+  "engines": {
+    "node": "8.11.2"
+  },
   "scripts": {
     "start": "node_modules/.bin/gulp dev",
     "postinstall": "node node_modules/gulp/bin/gulp.js githooks",

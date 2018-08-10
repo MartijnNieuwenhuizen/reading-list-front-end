@@ -63,7 +63,7 @@ class ArticleList {
             .then(res => res.json())
             .then(res => {
                 store.setMultiple('articles', res);
-                observer.publish(store, 'update-article-list');
+                observer.publish(store, 'update-article-list', res);
                 return res;
             })
             .then(res => this.render(this.options, res))
@@ -112,18 +112,15 @@ class ArticleList {
     }
 
     watch() {
-        observer.subscribe(store, 'update-article-list', () => this.update());
-        observer.subscribe(store, 'search-action', () => this.updateBasedOnSearchInput());
+        observer.subscribe(store, 'update-article-list', res => this.update(res));
+        observer.subscribe(store, 'search-action', res => this.updateBasedOnSearchInput(res));
     }
 
-    update() {
-        const articlesData = store.get('articles');
-        this.render(this.options, articlesData);
+    update(res) {
+        this.render(this.options, res);
     }
 
-    updateBasedOnSearchInput() {
-        const slugs = store.get('search-filtered-articles');
-
+    updateBasedOnSearchInput(slugs) {
         this.articles.forEach(article => {
             if (article.classList.contains('article-list__item--hide')) {
                 article.classList.remove('article-list__item--hide');
